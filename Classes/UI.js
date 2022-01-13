@@ -1,27 +1,34 @@
 class UI{
+
+    // help function to add DOM element
+    addUIElement(name, classname="", textcontent="", attributes ={}) {
+        const element = document.createElement(name);
+        if(classname !== ""){
+            element.className = classname;
+        }
+        element.appendChild(document.createTextNode(textcontent));
+        if(Object.keys(attributes).length > 0){
+            for(let key in attributes){
+                element.setAttribute(key, attributes[key]);
+            }
+        }
+        return element;
+    }
     addBook(book) {
-        const booksList = document.querySelector(".table");
-        const tr = document.createElement("tr")
-        const tbody = document.querySelector("tbody")
-        tbody.appendChild(tr)
+        const booksList = document.querySelector("tbody");
+        const tr = this.addUIElement("tr");
     for(name in book){
-        let td = document.createElement("td");
-        let bookText = document.createTextNode(book[name]);
-        td.appendChild(bookText);
+        let td = this.addUIElement("td", "", book[name] )
         tr.appendChild(td);
         console.log(tr);
     }
         //create link element
-        const link = document.createElement("a");
-        //add href
-        link.setAttribute("href", "#");
-        // add "X" text to link
-        link.appendChild(document.createTextNode("X"));
+        const link = this.addUIElement("a", "", "X", {"href":"#"})
         // create td for X
-        const tdX = document.createElement("td");
+        const td = this.addUIElement("td");
         //add link to td
-        tdX.appendChild(link);
-        tr.appendChild(tdX);
-        booksList.appendChild(tbody);
+        td.appendChild(link);
+        tr.appendChild(td);
+        booksList.appendChild(tr);
     }
 }
