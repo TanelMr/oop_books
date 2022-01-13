@@ -9,7 +9,7 @@ form.addEventListener("submit", addBook);
 
 
 // addBook function
-function addBook (event) {
+function addBook(event) {
 
     const authorInput = document.querySelector("#authorInput");
     const titleInput = document.querySelector("#titleInput");
@@ -19,6 +19,7 @@ function addBook (event) {
     const title = titleInput.value;
     const ISBN = ISBNInput.value;
 
+    const book = new Book(title, author, ISBN);
     ui.addBook(book);
 
     //clear inputs
