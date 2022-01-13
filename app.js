@@ -1,4 +1,4 @@
-//project objects
+// project objects
 const ui = new UI();
 const ls = new LS();
 
@@ -7,9 +7,18 @@ const form = document.querySelector("form");
 
 // events
 form.addEventListener("submit", addBook);
+document.addEventListener("DOMContentLoaded", getBooks);
 
+function getBooks(){
+   let books = ls.getData("books");
+    for(let i=0; i<books.length; i++) {
+        let book = books[i];
+        ui.addBook(book);
+    }
+    }
 
 // addBook function
+
 function addBook(event) {
 
     const authorInput = document.querySelector("#authorInput");
@@ -26,7 +35,7 @@ function addBook(event) {
     // add book to LS
     ls.addBook(book);
 
-    //clear inputs
+    // clear inputs
     titleInput.value = "";
     authorInput.value = "";
     ISBNInput.value = "";

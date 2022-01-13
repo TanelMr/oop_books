@@ -22,11 +22,11 @@ class UI{
         tr.appendChild(td);
         console.log(tr);
     }
-        //create link element
+        // create link element
         const link = this.addUIElement("a", "", "X", {"href":"#"})
         // create td for X
         const td = this.addUIElement("td");
-        //add link to td
+        // add link to td
         td.appendChild(link);
         tr.appendChild(td);
         booksList.appendChild(tr);
